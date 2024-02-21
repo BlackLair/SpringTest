@@ -12,23 +12,24 @@ import com.jwtest.spring.test.mybatis.domain.RealEstate;
 import com.jwtest.spring.test.mybatis.service.RealEstateService;
 
 @RestController
+@RequestMapping("/mybatis/real-estate/select")
 public class RealEstateController {
 	@Autowired
 	RealEstateService realEstateService;
 	
-	@RequestMapping("/mybatis/real-estate/1")
+	@RequestMapping("/1")
 	public RealEstate getRealEstate(@RequestParam("id") int id) {
 		RealEstate realEstate = realEstateService.getRealEstate(id);
 		return realEstate;
 	}
 	
-	@RequestMapping("/mybatis/real-estate/2")
+	@RequestMapping("/2")
 	public List<RealEstate> getCheapRealEstate(@RequestParam("rent") int rent){
 		List<RealEstate> list = realEstateService.getCheapRealEstateList(rent);
 		return list;
 	}
 	
-	@RequestMapping("/mybatis/real-estate/3")
+	@RequestMapping("/3")
 	public List<RealEstate> getGoodRealEstate(@RequestParam("area") int area, @RequestParam("price") int price){
 		List<RealEstate> list = realEstateService.getGoodRealEstateList(area, price);
 		return list;

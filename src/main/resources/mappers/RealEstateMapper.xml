@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.jwtest.spring.test.mybatis.repository.RealEstateRepository">
- 	<select id="selectRealEstate"
+ 	<select id="selectRealEstate" parameterType="int"
  	resultType="com.jwtest.spring.test.mybatis.domain.RealEstate">
  		SELECT
  			`id`
@@ -22,6 +22,7 @@
  	</select>
  	<select id="selectCheapRealEstateList"
  	resultType="com.jwtest.spring.test.mybatis.domain.RealEstate">
+ 	<![CDATA[
  		 SELECT
  			`id`
  			, `realtorId`
@@ -35,10 +36,12 @@
  		FROM
  			`real_estate`
  		WHERE
- 			`rentPrice` &lt; #{rent};
+ 			`rentPrice` < #{rent};
+ 	]]>
  	</select>
  	<select id="selectGoodRealEstateList"
  	resultType="com.jwtest.spring.test.mybatis.domain.RealEstate">
+ 	<![CDATA[
  		 SELECT
  			`id`
  			, `realtorId`
@@ -52,8 +55,9 @@
  		FROM
  			`real_estate`
  		WHERE
- 			`area` &gt; #{area}
- 			AND `price` &lt; #{price}
+ 			`area` > #{area}
+ 			AND `price` < #{price}
  		ORDER BY `createdAt` DESC;
+ 	]]>
  	</select>
  </mapper>
