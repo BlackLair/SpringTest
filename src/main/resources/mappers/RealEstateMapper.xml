@@ -36,6 +36,7 @@
  		FROM
  			`real_estate`
  		WHERE
+ 			`type` = '월세'
  			`rentPrice` < #{rent};
  	]]>
  	</select>
@@ -55,9 +56,74 @@
  		FROM
  			`real_estate`
  		WHERE
- 			`area` > #{area}
+ 			`type` = '매매'
+ 			AND `area` > #{area}
  			AND `price` < #{price}
  		ORDER BY `createdAt` DESC;
  	]]>
  	</select>
+ 	
+ 	<insert id="insertRealEstateInstance"
+ 	parameterType="com.jwtest.spring.test.mybatis.domain.RealEstate">
+ 		INSERT INTO
+ 			`real_estate`
+ 		(
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 		)
+ 		VALUE
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 		);
+ 	</insert>
+ 	<insert id="insertRealEstate"
+ 	parameterType="map">
+ 		INSERT INTO
+ 			`real_estate`
+ 		(
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 		)
+ 		VALUE
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 		);
+ 	
+ 	</insert>
+ 	<update id="updateRealEstate"
+ 	parameterType="map">
+ 		UPDATE
+ 			`real_estate`
+ 		SET
+ 			`type` = #{type}
+ 			, `price` = #{price}
+ 		WHERE
+ 			`id` = #{id};
+ 	</update>
+ 	<delete id="deleteRealEstate"
+ 	parameterType="int">
+ 		DELETE FROM
+ 			`real_estate`
+ 		WHERE
+ 			`id` = #{id};
+ 	
+ 	</delete>
  </mapper>

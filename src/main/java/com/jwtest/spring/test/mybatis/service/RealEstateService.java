@@ -27,4 +27,36 @@ public class RealEstateService {
 		List<RealEstate> list = realEstateRepository.selectGoodRealEstateList(area, price);
 		return list;
 	}
+	
+	public int insertRealEstateInstance(RealEstate realEstate) {
+		int count = realEstateRepository.insertRealEstateInstance(realEstate);
+		return count;
+	}
+	
+	public int insertRealEstate(
+			int realtorId
+			, String address
+			, int area
+			, String type
+			, int price
+			, Integer rentPrice) {
+		int count = realEstateRepository.insertRealEstate(
+				realtorId
+				, address
+				, area
+				, type
+				, price
+				, rentPrice);
+		return count;
+	}
+	
+	public int updateRealEstate(int id, String type, int price) {
+		int count = realEstateRepository.updateRealEstate(id, type, price);
+		return count;
+	}
+	
+	public int deleteRealEstate(int id) {
+		int count = realEstateRepository.deleteRealEstate(id);
+		return count;
+	}
 }
