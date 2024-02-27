@@ -18,7 +18,7 @@
 			<label>주소</label><br>
 			<input name="address" type="text" class="form-control"><br>
 			<label>등급</label><br>
-			<input name="grade" type=text" class="form-control"><br>
+			<input name="grade" type="text" class="form-control"><br>
 			<button type="submit" class="form-control col-2 bg-primary">추가</button>
 		</form>
 	</div>
