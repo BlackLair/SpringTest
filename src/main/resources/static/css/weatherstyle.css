@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.wrap{
+	width:1200px;
+	margin:0 auto;
+}
+
+aside{
+	width:180px;
+}
+section{
+	width:1020px;
+}
+
+.menu-logo{
+	height:50px;
+	font-size:18px;
+}
+
+footer{
+	height:80px;
+}
+.footer-logo{
+	width:180px;
+}
+.grayscale_img{
+	filter: grayscale(100%);
+	opacity:0.5;
+}
+
+.copyrights{
+	color:#AAAAAA;
+}
