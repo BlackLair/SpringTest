@@ -1,16 +1,24 @@
 package com.jwtest.spring.test.jstl.domain;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Weather {
-	private String date;
+	@DateTimeFormat(pattern = "yyyy년 MM월 dd일")
+	private Date date;
+	
 	private String weather;
 	private double temperatures;
 	private double precipitation;
 	private String microDust;
 	private double windSpeed;
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getWeather() {

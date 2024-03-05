@@ -82,7 +82,7 @@
 <script>
 		$(document).ready(function(){
 			$("#dateInput").datepicker({
-				dateFormat:"yy-mm-dd"
+				dateFormat:"yy년 mm월 dd일"
 			});
 			$("#btn-submit").click(function(e){
 				if($("#dateInput").val().length == 0){

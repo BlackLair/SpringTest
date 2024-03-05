@@ -3,7 +3,8 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.jwtest.spring.test.jstl.repository.WeatherRepository">
- 	<select id="selectAllWeather">
+ 	<select id="selectAllWeather"
+ 	resultType="com.jwtest.spring.test.jstl.domain.Weather">
  		SELECT
  			`date`
  			, `weather`
@@ -16,7 +17,8 @@
  		ORDER BY
  			`date`;
  	</select>
- 	<insert id="insertWeather">
+ 	<insert id="insertWeather"
+ 	parameterType="com.jwtest.spring.test.jstl.domain.Weather">
  		INSERT INTO
  			`weatherhistory`
  		(

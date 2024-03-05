@@ -20,8 +20,8 @@
 						<tbody>
 							<c:forEach var="weather" items="${weatherList }">							
 								<tr>
-									<fmt:parseDate var="date" value="${weather.date }" pattern="yyyy-MM-dd" />
-									<td><fmt:formatDate value="${date }" pattern="yyyy년 M월 d일" /></td>
+									<%--<fmt:parseDate var="date" value="${weather.date }" pattern="yyyy-MM-dd" /> --%>
+									<td><fmt:formatDate value="${weather.date }" pattern="yyyy년 M월 d일"  /></td>
 									<c:choose>
 										<c:when test="${weather.weather eq '맑음' }">
 											<c:set var="img" value="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg" />

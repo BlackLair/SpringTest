@@ -18,7 +18,6 @@ public class WeatherService {
 	}
 	
 	public int createWeather(Weather weather) {
-		weather.setDate(weather.getDate() + " 00:00:00");
 		return weatherRepository.insertWeather(weather);
 	}
 }
