@@ -6,7 +6,8 @@
  	<select id="selectFavoritesList"
  	resultType="com.jwtest.spring.test.ajax.domain.Favorites">
  		SELECT
- 			`name`
+ 			`id`
+ 			, `name`
  			, `url`
  		FROM
  			`favorites`;
@@ -25,4 +26,20 @@
  			, #{url}
  		);
  	</insert>
+ 	<select id="selectCountByUrl"
+ 	parameterType="String">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`favorites`
+ 		WHERE
+ 			`url` = #{url};
+ 	</select>
+ 	<delete id="deleteFavorite"
+ 	parameterType="int">
+ 		DELETE FROM
+ 			`favorites`
+ 		WHERE
+ 			`id` = #{id};
+ 	</delete>
  </mapper>

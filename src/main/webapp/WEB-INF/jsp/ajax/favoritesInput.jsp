@@ -13,7 +13,12 @@
 	<label>제목</label>
 	<input id="input-name" type="text" class="form-control">
 	<label class="mt-2">주소</label>
-	<input id="input-url" type="text" class="form-control">
+	<div class="d-flex justify-contents-between">
+		<input id="input-url" type="text" class="form-control col-10">
+		<button type="button" class="form-control bg-info text-white" id="btn-checkDuplication">중복확인</button>
+	</div>
+	<div id="div-duplicated" class="d-none text-danger">중복된 url 입니다.</div>
+	<div id="div-available" class="d-none text-success">저장 가능한 url 입니다.</div>
 	<button id="btn-add" type="button" class="form-control bg-success text-white mt-2">추가</button>
 	
 	
@@ -22,29 +27,73 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function(){
+		let isDuplicated = true;
+		$("#input-url").on("input", function(){
+			isDuplicated = true;
+			$("#div-duplicated").addClass("d-none");
+			$("#div-available").addClass("d-none");
+		});
+		
+		$("#btn-checkDuplication").on("click", function(){
+			let url = $("#input-url").val();
+			if(url.length == 0){
+				alert("url을 입력하세요.");
+				return;
+			}
+			if(!url.startsWith("http://") && !url.startsWith("https://")){
+				alert("올바른 url이 아닙니다.");
+				return;
+			}
+			$.ajax({
+				type:"get"
+				, url:"/ajax/favorites/check-url-duplication"
+				, data:{
+					"url":url
+				}, success:function(data){
+					if(data.isDuplicated){
+						$("#div-duplicated").removeClass("d-none");
+						isDuplicated = true;
+					}else{
+						$("#div-available").removeClass("d-none");
+						isDuplicated = false;
+					}
+				}
+			});
+		});
 		$("#btn-add").on("click", function(){
+
 			let name = $("#input-name").val();
 			let url = $("#input-url").val();
 			if(name.length == 0){
 				alert("제목을 입력하세요.");
-				return false;
+				return;
 			}
 			if(url.length == 0){
 				alert("url을 입력하세요.");
-				return false;
+				return;
 			}
 			if(!url.startsWith("http://") && !url.startsWith("https://")){
 				alert("올바른 url이 아닙니다.");
-				return false;
+				return;
+			}
+			if(isDuplicated){
+				alert("주소 중복확인이 되지 않았습니다.");
+				return;
 			}
 			$.ajax({
 				type:"get"
-				, url:"/ajax/createFavorite"
+				, url:"/ajax/favorites/create"
 				, data:{
 					"name":name
 					, "url":url
 				}, success:function(data){
-					location.href = data;
+					if(data.result == "success"){
+						location.replace("/ajax/favorites/list");
+					}else{
+						alert("즐겨찾기 추가 실패");
+					}
+				}, error:function(xhr, status, error){
+					alert("기타 오류 : " + status);
 				}
 			});
 		});

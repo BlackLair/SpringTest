@@ -20,4 +20,14 @@ public class FavoritesService {
 	public int addFavorite(Favorites favorite) {
 		return favoritesRepository.insertFavorite(favorite);
 	}
+	
+	public boolean isUrlDuplicated(String url) {
+		int count = favoritesRepository.selectCountByUrl(url);
+		return count >= 1;
+	}
+	
+	public boolean removeFavorite(int id) {
+		int count = favoritesRepository.deleteFavorite(id);
+		return count >= 1;
+	}
 }
