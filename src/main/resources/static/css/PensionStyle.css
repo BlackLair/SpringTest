@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+#wrap{
+    width:1200px;
+    margin:0 auto;
+}
+
+header{
+    height:100px;
+}
+
+
+a:hover{
+    background-color: rgb(173, 77, 13);
+}
+.bg-lightbrown{
+    background-color: rgb(201, 129, 70);
+}
+
+.bg-brown{
+    background-color:rgb(173, 77, 13)
+}
+
+#info{
+    height:320px;
+}
+
+footer{
+    height:100px;
+}
+
+.hide{
+    display:none;
+}
