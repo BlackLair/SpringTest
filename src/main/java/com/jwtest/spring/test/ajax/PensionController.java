@@ -60,6 +60,7 @@ public class PensionController {
 			resultMap.put("name", reservation.getName());
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			resultMap.put("date", sdf.format(reservation.getDate()));
+//			resultMap.put("date", reservation.getDate());
 			resultMap.put("day", reservation.getDay());
 			resultMap.put("headcount", reservation.getHeadcount());
 			resultMap.put("state", reservation.getState());
