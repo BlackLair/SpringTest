@@ -46,5 +46,8 @@ public class CompanyService {
 		}
 		companyRepository.delete(company);
 		return true;
+		
+		// 람다식을 통해 아래와 같은 동작도 사용할 수 있음.
+//		optionalCompany.ifPresent(company -> companyRepository.delete(company));
 	}
 }
