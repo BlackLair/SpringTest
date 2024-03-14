@@ -66,5 +66,5 @@ public class RecruitController {
 		Date date = cal.getTime();
 		
 		return recruitService.searchCustomRecruit(date, 8100, "정규직");
-	}
+	} 
 }
